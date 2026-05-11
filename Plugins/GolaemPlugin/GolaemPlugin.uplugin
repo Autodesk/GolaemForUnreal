@@ -1,0 +1,41 @@
+{
+  "FileVersion": 3,
+  "Version": 9,
+  "VersionName": "9.3.2",
+  "FriendlyName": "Autodesk Golaem Plugin for Unreal",
+  "Description": "Autodesk Golaem Plugin for Unreal",
+  "Category": "Golaem",
+  "CreatedBy": "Autodesk, Inc.",
+  "CreatedByURL": "http://www.golaem.com",
+  "DocsURL": "http://unreal.golaem.com",
+  "MarketplaceURL": "",
+  "SupportURL": "http://unreal.golaem.com",
+  "EnabledByDefault": true,
+  "CanContainContent": true,
+  "IsBetaVersion": false,
+  "Installed": true,
+  "Modules": [
+    {
+      "Name": "CrowdModule",
+      "Type": "Runtime",
+      "LoadingPhase": "PreDefault",
+      "WhitelistPlatforms": [
+        "Win64"
+      ]
+    },
+    {
+      "Name": "CrowdModuleEditor",
+      "Type": "Editor",
+      "LoadingPhase": "PreDefault",
+      "WhitelistPlatforms": [
+        "Win64"
+      ]
+    }
+  ],
+  "Plugins": [
+  {
+    "Name": "EditorScriptingUtilities",
+    "Enabled": true
+  }
+  ]
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    Workaround for VS 2026 "SetEnv" task failing with:
+      "System.ArgumentException: Environment variable name or value is too long."
+
+    UE generates IncludePath values exceeding the 32,767-char Windows env var limit.
+    The SetBuildDefaultEnvironmentVariables target in Microsoft.Cpp.Current.targets
+    calls SetEnv to push IncludePath into the INCLUDE env var, which fails.
+
+    Overriding the target here makes it a no-op. This is safe for UE projects because:
+    - Actual compilation is done by UnrealBuildTool (NMake), not MSBuild's C++ toolchain
+    - IntelliSense reads IncludePath directly from the project properties, not from INCLUDE env var
+
+    This file lives at the repo root (not Intermediate/) so it survives project regeneration
+    and can be committed for all team members.
+  -->
+  <Target Name="SetBuildDefaultEnvironmentVariables" />
+</Project>
