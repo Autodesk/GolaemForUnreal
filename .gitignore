@@ -20,9 +20,9 @@ pack/
 Binaries
 Intermediate
 Saved
-Content/
+Content/*
+!Content/Python
 Build/
-Plugins/GolaemPlugin/Content
 Plugins/GolaemPlugin/Resources/Icons/editors
 Plugins/GolaemPlugin/Resources/Icons/layoutToolv7
 Plugins/GolaemPlugin/Resources/Icons/libraryTool
