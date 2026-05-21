@@ -98,7 +98,20 @@ namespace Golaem
             // Copy each file into the new directory.
             foreach (FileInfo fi in source.GetFiles())
             {
-                if (excludeFilters == null || !excludeFilters.Contains(fi.Extension))
+                bool isExcluded = false;
+                if (excludeFilters != null)
+                {
+                    foreach (string filter in excludeFilters)
+                    {
+                        if (fi.Name.EndsWith(filter, StringComparison.OrdinalIgnoreCase))
+                        {
+                            Console.WriteLine(fi.FullName + " is excluded by filter " + filter);
+                            isExcluded = true;
+                            break;
+                        }
+                    }
+                }
+                if (!isExcluded)
                 {
                     Console.WriteLine(@"Copying {0}\{1}", target.FullName, fi.Name);
                     fi.CopyTo(Path.Combine(target.FullName, fi.Name), true);
@@ -131,7 +144,7 @@ namespace Golaem
                 {
                     foreach (string filter in excludeFilters)
                     {
-                        if (srcPath.EndsWith(filter))
+                        if (srcPath.EndsWith(filter, StringComparison.OrdinalIgnoreCase))
                         {
                             Console.WriteLine(srcPath + " is excluded by filter " + filter);
                             isExcluded = true;
