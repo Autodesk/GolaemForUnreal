@@ -353,14 +353,8 @@ void FGolaemCrowdEditorModule::LaunchAboutWindow()
     if (golaemModule == nullptr)
         return; // should not happen
 
-    FString licenseInfo;
-    licenseInfo = "1;" + licenseInfo;
-
-    licenseInfo = licenseInfo.Replace(TEXT("\n"), TEXT(" - "));
-    licenseInfo = licenseInfo.Replace(TEXT("\r"), TEXT(""));
-
     // open window
-    FString openCommand = "py abtUI = launcher.AboutWindowMain('" + golaemModule->getPluginVersionName() + "', '" + licenseInfo + "')";
+    FString openCommand = "py abtUI = launcher.AboutWindowMain('" + golaemModule->getPluginVersionName() + "')";
     GEngine->Exec(NULL, TEXT("py import glm.ui.windowUnrealLauncher as launcher"));
     GEngine->Exec(NULL, openCommand.GetCharArray().GetData());
 }

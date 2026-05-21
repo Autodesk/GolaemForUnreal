@@ -9,7 +9,6 @@ from ..simCacheLib import simCacheLibWindow as scl
 from ..simCacheLib import simCacheLibWindowUnrealWrapper as sclw
 from ..layout import layoutEditorUtils
 from ..layout import layoutEditorWrapper
-from . import golaemAboutWindow as abt
 from ..Qtpy.Qt import QtCore, QtWidgets
 import unreal
 import sys
@@ -46,13 +45,18 @@ def SimCacheLibWindowMain():
 # ------------------------------------------------------------------
 # AboutWindowMain
 # ------------------------------------------------------------------
-def AboutWindowMain(golaemVersion="", licenseInfo=""):
+def AboutWindowMain(golaemVersion=""):
+    try:
+        from . import golaemAboutWindowUnreal as abtUnreal
+    except ImportError:
+        unreal.log_warning("This is a Golaem for Unreal standalone build, the about window is not available.")
+        return None
     application = None
     abtUI = None
     if not QtWidgets.QApplication.instance():
         application = QtWidgets.QApplication(sys.argv)
         unreal.log("Created QApplication instance: {0}".format(application))
-    abtUI = abt.GolaemAboutWindow(productName="Golaem for Unreal", golaemVersion=golaemVersion, baseDir=None)
+    abtUI = abtUnreal.GolaemAboutWindowUnreal(golaemVersion=golaemVersion, baseDir=None)
     abtUI.show()
     abtUI.setWindowState(abtUI.windowState() & ~QtCore.Qt.WindowMinimized | QtCore.Qt.WindowActive)
     abtUI.activateWindow()
