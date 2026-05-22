@@ -26,11 +26,10 @@ glmSimCacheLibWindowUIs = []
 # ------------------------------------------------------------------
 def SimCacheLibWindowMain():
     global glmSimCacheLibWindowUIs
-    application = None
     libUI = None
     if not QtWidgets.QApplication.instance():
-        application = QtWidgets.QApplication(sys.argv)
-        unreal.log("Created QApplication instance: {0}".format(application))
+        unreal.log_error("No QApplication instance found. The Simulation Cache Library window cannot be displayed.")
+        return None
     if len(glmSimCacheLibWindowUIs):
         libUI = glmSimCacheLibWindowUIs[0]
     else:
@@ -48,14 +47,15 @@ def SimCacheLibWindowMain():
 def AboutWindowMain(golaemVersion=""):
     try:
         from . import golaemAboutWindowUnreal as abtUnreal
-    except ImportError:
+    except ModuleNotFoundError:
         unreal.log_warning("This is a Golaem for Unreal standalone build, the about window is not available.")
         return None
-    application = None
-    abtUI = None
+    except ImportError as e:
+        unreal.log_error(f"Error importing about window: {e}")
+        return None
     if not QtWidgets.QApplication.instance():
-        application = QtWidgets.QApplication(sys.argv)
-        unreal.log("Created QApplication instance: {0}".format(application))
+        unreal.log_error("No QApplication instance found. The About window cannot be displayed.")
+        return None
     abtUI = abtUnreal.GolaemAboutWindowUnreal(golaemVersion=golaemVersion, baseDir=None)
     abtUI.show()
     abtUI.setWindowState(abtUI.windowState() & ~QtCore.Qt.WindowMinimized | QtCore.Qt.WindowActive)
@@ -67,11 +67,9 @@ def AboutWindowMain(golaemVersion=""):
 # LayoutEditorWindowMain
 # ------------------------------------------------------------------
 def LayoutEditorWindowMain(golaemUEDir=""):
-    application = None
-    layoutEditor = None
     if not QtWidgets.QApplication.instance():
-        application = QtWidgets.QApplication(sys.argv)
-        unreal.log("Created QApplication instance: {0}".format(application))
+        unreal.log_error("No QApplication instance found. The Layout Editor window cannot be displayed.")
+        return None
 
     layoutIconsDir = os.path.join(golaemUEDir, "Resources", "Icons", "layoutToolv7").replace("\\", "/")
     layoutWrapper = layoutEditorWrapper.getTheLayoutEditorWrapperInstance()
