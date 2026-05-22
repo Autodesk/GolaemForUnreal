@@ -28,6 +28,9 @@ def SimCacheLibWindowMain():
     global glmSimCacheLibWindowUIs
     libUI = None
     if not QtWidgets.QApplication.instance():
+        application = QtWidgets.QApplication(sys.argv)
+        unreal.log("Created QApplication instance: {0}".format(application))
+    if not QtWidgets.QApplication.instance():
         unreal.log_error("No QApplication instance found. The Simulation Cache Library window cannot be displayed.")
         return None
     if len(glmSimCacheLibWindowUIs):
@@ -54,6 +57,9 @@ def AboutWindowMain(golaemVersion=""):
         unreal.log_error(f"Error importing about window: {e}")
         return None
     if not QtWidgets.QApplication.instance():
+        application = QtWidgets.QApplication(sys.argv)
+        unreal.log("Created QApplication instance: {0}".format(application))
+    if not QtWidgets.QApplication.instance():
         unreal.log_error("No QApplication instance found. The About window cannot be displayed.")
         return None
     abtUI = abtUnreal.GolaemAboutWindowUnreal(golaemVersion=golaemVersion, baseDir=None)
@@ -67,6 +73,9 @@ def AboutWindowMain(golaemVersion=""):
 # LayoutEditorWindowMain
 # ------------------------------------------------------------------
 def LayoutEditorWindowMain(golaemUEDir=""):
+    if not QtWidgets.QApplication.instance():
+        application = QtWidgets.QApplication(sys.argv)
+        unreal.log("Created QApplication instance: {0}".format(application))
     if not QtWidgets.QApplication.instance():
         unreal.log_error("No QApplication instance found. The Layout Editor window cannot be displayed.")
         return None
