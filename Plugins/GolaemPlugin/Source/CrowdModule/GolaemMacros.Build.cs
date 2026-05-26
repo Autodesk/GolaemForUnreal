@@ -98,7 +98,20 @@ namespace Golaem
             // Copy each file into the new directory.
             foreach (FileInfo fi in source.GetFiles())
             {
-                if (excludeFilters == null || !excludeFilters.Contains(fi.Extension))
+                bool isExcluded = false;
+                if (excludeFilters != null)
+                {
+                    foreach (string filter in excludeFilters)
+                    {
+                        if (fi.Name.EndsWith(filter, StringComparison.OrdinalIgnoreCase))
+                        {
+                            Console.WriteLine(fi.FullName + " is excluded by filter " + filter);
+                            isExcluded = true;
+                            break;
+                        }
+                    }
+                }
+                if (!isExcluded)
                 {
                     Console.WriteLine(@"Copying {0}\{1}", target.FullName, fi.Name);
                     fi.CopyTo(Path.Combine(target.FullName, fi.Name), true);
@@ -109,7 +122,7 @@ namespace Golaem
             foreach (DirectoryInfo diSourceSubDir in source.GetDirectories())
             {
                 DirectoryInfo nextTargetSubDir = target.CreateSubdirectory(diSourceSubDir.Name);
-                CopyAllFiles(diSourceSubDir, nextTargetSubDir);
+                CopyAllFiles(diSourceSubDir, nextTargetSubDir, excludeFilters);
             }
         }
 
@@ -126,10 +139,22 @@ namespace Golaem
             }
             if (File.Exists(srcPath))
             {
-                string filename = Path.GetFileName(srcPath);
-                string fileExt = Path.GetExtension(srcPath);
-                if (excludeFilters == null || !excludeFilters.Contains(fileExt))
+                bool isExcluded = false;
+                if (excludeFilters != null)
                 {
+                    foreach (string filter in excludeFilters)
+                    {
+                        if (srcPath.EndsWith(filter, StringComparison.OrdinalIgnoreCase))
+                        {
+                            Console.WriteLine(srcPath + " is excluded by filter " + filter);
+                            isExcluded = true;
+                            break;
+                        }
+                    }
+                }
+                if (!isExcluded)
+                {
+                    string filename = Path.GetFileName(srcPath);
                     string destPath = Path.Combine(contentDir, filename);
                     copyIfNewest(srcPath, destPath);
                 }
@@ -147,8 +172,8 @@ namespace Golaem
         // Adds the Golaem SDK as a dependency
         public static void AddGolaemDependencies(ModuleRules Module, ReadOnlyTargetRules Target, bool bCopyDlls, bool bCopyPython)
         {
-            var glmBinDlls = new List<string>();
-            var glmLibs = new List<string>();
+            List<string> glmBinDlls = new List<string>();
+            List<string> glmLibs = new List<string>();
             var glmInstallPath = "";
             if (string.IsNullOrEmpty(GolaemParameters.GolaemInstallPath))
             {
@@ -287,10 +312,10 @@ namespace Golaem
                 List<string> pythonUiScripts = new List<string>();
                 pythonUiScripts.Add(Path.Combine(glmScriptsUiPath, "windowWrapper.py"));
                 pythonUiScripts.Add(Path.Combine(glmScriptsUiPath, "golaemAboutWindow.py"));
+                pythonUiScripts.Add(Path.Combine(glmScriptsUiPath, "golaemAboutWindowUnreal.py"));
 
-                // copy LICENSE file for about box from the root
-                string RepoRootDir = Path.GetFullPath(Path.Combine(Module.PluginDirectory, "../../../../../"));
-                string LicenseFile = Path.Combine(RepoRootDir, "LICENSE");
+                // copy LICENSE file for about box from the Golaem installation
+                string LicenseFile = Path.Combine(glmInstallPath, "LICENSE");
                 pythonUiScripts.Add(LicenseFile);
 
                 string[] pythonGlmUiDirs = new string[] { "Content", "Python", "glm", "ui" };

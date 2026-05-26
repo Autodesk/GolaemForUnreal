@@ -46,7 +46,6 @@ public:
 
     // UI
     static void CreateGolaemMenuItems(class FMenuBuilder& MenuBuilder);
-    static void CreateGolaemMenuItemsNoLicense(class FMenuBuilder& MenuBuilder);
 
     static void LaunchLibraryWindow();
     static void LaunchLayoutEditorWindow();

@@ -9,7 +9,6 @@ from ..simCacheLib import simCacheLibWindow as scl
 from ..simCacheLib import simCacheLibWindowUnrealWrapper as sclw
 from ..layout import layoutEditorUtils
 from ..layout import layoutEditorWrapper
-from . import golaemAboutWindow as abt
 from ..Qtpy.Qt import QtCore, QtWidgets
 import unreal
 import sys
@@ -27,11 +26,13 @@ glmSimCacheLibWindowUIs = []
 # ------------------------------------------------------------------
 def SimCacheLibWindowMain():
     global glmSimCacheLibWindowUIs
-    application = None
     libUI = None
     if not QtWidgets.QApplication.instance():
         application = QtWidgets.QApplication(sys.argv)
         unreal.log("Created QApplication instance: {0}".format(application))
+    if not QtWidgets.QApplication.instance():
+        unreal.log_error("No QApplication instance found. The Simulation Cache Library window cannot be displayed.")
+        return None
     if len(glmSimCacheLibWindowUIs):
         libUI = glmSimCacheLibWindowUIs[0]
     else:
@@ -46,13 +47,22 @@ def SimCacheLibWindowMain():
 # ------------------------------------------------------------------
 # AboutWindowMain
 # ------------------------------------------------------------------
-def AboutWindowMain(golaemVersion="", licenseInfo=""):
-    application = None
-    abtUI = None
+def AboutWindowMain(golaemVersion=""):
+    try:
+        from . import golaemAboutWindowUnreal as abtUnreal
+    except ModuleNotFoundError:
+        unreal.log_warning("This is a Golaem for Unreal standalone build, the about window is not available.")
+        return None
+    except ImportError as e:
+        unreal.log_error(f"Error importing about window: {e}")
+        return None
     if not QtWidgets.QApplication.instance():
         application = QtWidgets.QApplication(sys.argv)
         unreal.log("Created QApplication instance: {0}".format(application))
-    abtUI = abt.GolaemAboutWindow(productName="Golaem for Unreal", golaemVersion=golaemVersion, baseDir=None)
+    if not QtWidgets.QApplication.instance():
+        unreal.log_error("No QApplication instance found. The About window cannot be displayed.")
+        return None
+    abtUI = abtUnreal.GolaemAboutWindowUnreal(golaemVersion=golaemVersion, baseDir=None)
     abtUI.show()
     abtUI.setWindowState(abtUI.windowState() & ~QtCore.Qt.WindowMinimized | QtCore.Qt.WindowActive)
     abtUI.activateWindow()
@@ -63,11 +73,12 @@ def AboutWindowMain(golaemVersion="", licenseInfo=""):
 # LayoutEditorWindowMain
 # ------------------------------------------------------------------
 def LayoutEditorWindowMain(golaemUEDir=""):
-    application = None
-    layoutEditor = None
     if not QtWidgets.QApplication.instance():
         application = QtWidgets.QApplication(sys.argv)
         unreal.log("Created QApplication instance: {0}".format(application))
+    if not QtWidgets.QApplication.instance():
+        unreal.log_error("No QApplication instance found. The Layout Editor window cannot be displayed.")
+        return None
 
     layoutIconsDir = os.path.join(golaemUEDir, "Resources", "Icons", "layoutToolv7").replace("\\", "/")
     layoutWrapper = layoutEditorWrapper.getTheLayoutEditorWrapperInstance()

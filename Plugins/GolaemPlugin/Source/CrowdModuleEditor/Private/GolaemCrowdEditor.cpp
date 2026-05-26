@@ -230,13 +230,6 @@ void FGolaemCrowdEditorModule::StartupModule()
                     FNewMenuDelegate::CreateStatic(&FGolaemCrowdEditorModule::CreateGolaemMenuItems), false, FSlateIcon(FGolaemStyle::GetStyleSetName(), "Golaem.Icon16"));
             }
 
-            static void AddGolaemMenuNoLicenseCommands(FMenuBuilder& MenuBuilder)
-            {
-                MenuBuilder.AddSubMenu(
-                    FText::FromString(FString("Golaem")), FText::FromString(FString("Golaem Tools")),
-                    FNewMenuDelegate::CreateStatic(&FGolaemCrowdEditorModule::CreateGolaemMenuItemsNoLicense), false, FSlateIcon(FGolaemStyle::GetStyleSetName(), "Golaem.Icon16"));
-            }
-
             // static void AddGolaemExportMenu(FMenuBuilder& MenuBuilder)
             //{
             //     FUIAction ExportAction(FExecuteAction::CreateStatic(&FGolaemUI::LaunchExportTerrainWindow));
@@ -315,13 +308,6 @@ void FGolaemCrowdEditorModule::CreateGolaemMenuItems(class FMenuBuilder& MenuBui
     FText SimulationTooltip = FText::FromString(FString("The Golaem Simulation Node will run a live simulation based on a Golaem gda scene description file."));
     MenuBuilder.AddMenuEntry(SimulationDescription, SimulationTooltip, FSlateIcon(FGolaemStyle::GetStyleSetName(), "GolaemEngine.Icon16"), SimulationAction);
 
-    CreateGolaemMenuItemsNoLicense(MenuBuilder);
-}
-
-//-----------------------------------------------------------------------------
-void FGolaemCrowdEditorModule::CreateGolaemMenuItemsNoLicense(class FMenuBuilder& MenuBuilder)
-{
-    // Golaem About
     FUIAction AboutAction(FExecuteAction::CreateStatic(&FGolaemCrowdEditorModule::LaunchAboutWindow));
     FText AboutDescription = FText::FromString(FString("About Golaem"));
     FText AboutTooltip = FText::FromString(FString("Displays the Golaem About"));
@@ -348,19 +334,12 @@ void FGolaemCrowdEditorModule::LaunchLayoutEditorWindow()
 //-----------------------------------------------------------------------------
 void FGolaemCrowdEditorModule::LaunchAboutWindow()
 {
-    // get license information
     FGolaemCrowdModule* golaemModule(FModuleManager::GetModulePtr<FGolaemCrowdModule>(FName("CrowdModule")));
     if (golaemModule == nullptr)
         return; // should not happen
 
-    FString licenseInfo;
-    licenseInfo = "1;" + licenseInfo;
-
-    licenseInfo = licenseInfo.Replace(TEXT("\n"), TEXT(" - "));
-    licenseInfo = licenseInfo.Replace(TEXT("\r"), TEXT(""));
-
     // open window
-    FString openCommand = "py abtUI = launcher.AboutWindowMain('" + golaemModule->getPluginVersionName() + "', '" + licenseInfo + "')";
+    FString openCommand = "py abtUI = launcher.AboutWindowMain('" + golaemModule->getPluginVersionName() + "')";
     GEngine->Exec(NULL, TEXT("py import glm.ui.windowUnrealLauncher as launcher"));
     GEngine->Exec(NULL, openCommand.GetCharArray().GetData());
 }
