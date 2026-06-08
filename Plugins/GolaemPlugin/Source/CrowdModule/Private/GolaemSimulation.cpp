@@ -15,7 +15,6 @@
 #include "HAL/PlatformFilemanager.h"
 #include "Engine/StaticMesh.h"
 #include "StaticMeshResources.h"
-#include "Components/StaticMeshComponent.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "Misc/ConfigCacheIni.h"
 #include "AssetRegistry/AssetData.h"
@@ -65,7 +64,7 @@ int exportLibraryItem(const char* filePath, const char* libraryName, const char*
     if (!fileOutput.good())
         return -1;
 
-    // buid json item
+    // build json item
     fileOutput << "{";
     fileOutput << "\n	\"libFile\": \"\",";
     fileOutput << "\n	\"libFileDirty\": true,";
@@ -616,10 +615,8 @@ void AGolaemSimulation::InitSimulation()
 
             for (uint32_t simDataEntityIdx = 0, entityCount = simulationData->_entityCount; simDataEntityIdx < entityCount; ++simDataEntityIdx)
             {
-                int64_t entityId = simulationData->_entityIds[simDataEntityIdx];
-                if (entityId < 0)
+                if (!glm::crowdio::isEntityValid(simulationData, simDataEntityIdx))
                 {
-                    // entity was probably killed
                     continue;
                 }
 
@@ -778,11 +775,14 @@ bool AGolaemSimulation::GetBoneSpaceTransforms_AnyThread(int simulationIndex, in
             USkeletalMeshComponent* SkelMeshComp = currentChar->GetSkeletalMeshComponent();
             USkeletalMesh* skelMesh = SkelMeshComp->SkeletalMesh;
 
-            int64_t entityId = simulationData->_entityIds[entityCacheIndex];
-
             TArray<FTransform> ComponentSpaceTransforms;
 
-            if (entityId != -1 && frameData->_entityEnabled[entityCacheIndex] == 1)
+            if (!glm::crowdio::isEntityValid(simulationData, entityCacheIndex))
+            {
+                return false;
+            }
+
+            if (frameData->_entityEnabled[entityCacheIndex] == 1)
             {
                 unsigned int entityType = simulationData->_entityTypes[entityCacheIndex];
 
