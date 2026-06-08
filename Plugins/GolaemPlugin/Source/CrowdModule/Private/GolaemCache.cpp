@@ -1658,8 +1658,15 @@ void AGolaemCache::RefreshCharacters()
         glm::PODArray<int> cacheCharacterToBoneCount;
         for (uint32_t iEntity = 0; iEntity < simuData->_entityCount; iEntity++)
         {
+            if (!glm::crowdio::isEntityValid(simuData, iEntity))
+            {
+                continue;
+            }
+
             if (cacheCharacterToBoneCount.size() <= simuData->_characterIdx[iEntity])
+            {
                 cacheCharacterToBoneCount.resize(simuData->_characterIdx[iEntity] + 1, -1);
+            }
 
             cacheCharacterToBoneCount[simuData->_characterIdx[iEntity]] = simuData->_boneCount[simuData->_entityTypes[iEntity]];
         }
@@ -1691,10 +1698,8 @@ void AGolaemCache::RefreshCharacters()
         bool collapseCacheInOutliner = false;
         for (uint32_t simDataEntityIdx = 0, entityCount = simuData->_entityCount; simDataEntityIdx < entityCount; ++simDataEntityIdx)
         {
-            int64_t entityId = simuData->_entityIds[simDataEntityIdx];
-            if (entityId < 0)
+            if (!glm::crowdio::isEntityValid(simuData, simDataEntityIdx))
             {
-                // entity was probably killed
                 continue;
             }
 
@@ -1812,12 +1817,11 @@ void AGolaemCache::LoadFrameData(int crowdFieldIndex, bool bInitSimuShader, bool
             // not optimized, look for each actor by crowdEntityId
             for (uint32_t simDataEntityIdx = 0, entityCount = simuData->_entityCount; simDataEntityIdx < entityCount; ++simDataEntityIdx)
             {
-                int64_t entityId = simuData->_entityIds[simDataEntityIdx];
-                if (entityId < 0)
+                if (!glm::crowdio::isEntityValid(simuData, simDataEntityIdx))
                 {
-                    // entity was probably killed
                     continue;
                 }
+                int64_t entityId = simuData->_entityIds[simDataEntityIdx];
                 for (int iChildChar = 0; iChildChar < allChildCharacters.Num(); iChildChar++)
                 {
                     if (allChildCharacters[iChildChar]->CrowdEntityId == entityId)
@@ -2434,11 +2438,14 @@ bool AGolaemCache::GetBoneSpaceTransforms_AnyThread(int simulationIndex, int ent
             USkeletalMeshComponent* SkelMeshComp = currentChar->GetSkeletalMeshComponent();
             USkeletalMesh* skelMesh = SkelMeshComp->SkeletalMesh;
 
-            int64_t entityId = simuData->_entityIds[entityIndex];
-
             TArray<FTransform> ComponentSpaceTransforms;
 
-            if (entityId != -1 && frameData->_entityEnabled[entityIndex] == 1 && !currentChar->IsHidden())
+            if (!glm::crowdio::isEntityValid(simuData, entityIndex))
+            {
+                return false;
+            }
+
+            if (frameData->_entityEnabled[entityIndex] == 1 && !currentChar->IsHidden())
             {
                 unsigned int entityType = simuData->_entityTypes[entityIndex];
 
