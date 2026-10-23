@@ -1,0 +1,954 @@
+GOLAEM FOR UNREAL 9.4 - CHANGELOG - March 24th 2027
+---------------------------------------------
+
+** To sort before next tag
+
+** New features
+
+** Improvements
+
+** Bug fixes
+
+** Refactoring
+
+** Tests
+
+** Samples
+
+** Tutorials
+
+** Documentation
+
+** Misc
+
+
+
+
+GOLAEM FOR UNREAL 9.3.3 - CHANGELOG - November 18th 2026
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 9.3.3
+
+** Bug fixes
+
+- Fixed a crash when loading a simulation cache where the Kill behavior was run during the simulation
+
+** Supported DCCs
+
+- Unreal Engine 5.4, 5.6, 5.7
+
+
+
+
+
+GOLAEM FOR UNREAL 9.3.2 - CHANGELOG - July 22nd 2026
+---------------------------------------------
+
+** Important notice
+
+GolaemForUnreal has been open sourced and is available at https://github.com/autodesk/GolaemForUnreal in case you want to build them yourself with an unsupported version of Unreal
+
+
+** Improvements
+
+- Update to Golaem 9.3.2
+
+
+** Bug fixes
+
+- Fixed a crash when replaying a cache with a layout and emitted entities
+- Fixed a crash when having instanced meshes with emitted entities in a Golaem Simulation
+
+** Supported DCCs
+
+- Unreal Engine 5.4, 5.6, 5.7
+
+
+
+
+
+GOLAEM FOR UNREAL 9.3.1 - CHANGELOG - May 20th 2026
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 9.3.1
+
+
+** Refactoring
+
+- Added support for Unreal Engine 5.7
+- Removed support for Unreal Engine 4.27
+
+** Supported DCCs
+
+- Unreal Engine 5.4, 5.6, 5.7
+
+
+
+
+
+GOLAEM FOR UNREAL 9.3 - CHANGELOG - March 25th 2026
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 9.3
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.4, 5.6
+
+
+
+
+
+GOLAEM FOR UNREAL 9.2.3 - CHANGELOG - November 12th 2025
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 9.2.3
+
+** Bug fixes
+
+- Fixed rigid meshes lagging in the Golaem For Unreal plugin
+- Fixed entities clipping in the Golaem For Unreal plugin
+
+** Refactoring
+
+- Added support for Unreal Engine 5.6
+- Removed support for Unreal Engine 5.3
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.4, 5.6
+
+
+
+
+GOLAEM FOR UNREAL 9.2.2 - CHANGELOG - August 6th 2025
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 9.2.2
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.3, 5.4
+
+
+
+
+
+GOLAEM FOR UNREAL 9.2.1 - CHANGELOG -  June 4th 2025
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 9.2.1
+
+
+** Bug fixes
+
+- Fixed wrong detection of rigid meshes in the default instancing mode.
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.3, 5.4
+
+
+
+
+
+GOLAEM FOR UNREAL 9.2 - CHANGELOG - March 26th 2025
+---------------------------------------------
+
+** Important notice
+
+Golaem for Unreal does not require a license anymore
+
+
+** Improvements
+
+- Update to Golaem 9.2
+- Added custom framerate override on the GolaemCache Node in the Golaem For Unreal plugin
+
+
+** Bug fixes
+
+- Fixed Motion Blur when using temporal AA in the Golaem For Unreal plugin
+- Fixed Sequence Frame Range in the Golaem For Unreal plugin
+
+
+** Refactoring
+
+- Added support for Unreal Engine 5.4
+- Removed support for Unreal Engine 5.2
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.3, 5.4
+
+
+
+
+
+GOLAEM FOR UNREAL 9.1.1 - CHANGELOG - August 1st 2024
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 9.1.1
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.2, 5.3
+
+
+
+
+
+GOLAEM FOR UNREAL 9.1 - CHANGELOG - June 26th 2024
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 9.1
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.2, 5.3
+
+
+
+
+
+GOLAEM FOR UNREAL 9.0.2 - CHANGELOG - April 30th 2024
+---------------------------------------------
+
+** Improvements
+
+- Added set GDA property Blueprint functions
+
+
+** Bug fixes
+
+- Fixed LOD Issue with asset repartition (was displaying all assets in lower LODs)
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.2, 5.3
+
+
+
+
+
+GOLAEM FOR UNREAL 9.0.1 - CHANGELOG - March 6th 2024
+---------------------------------------------
+
+** Bug fixes
+- Fixed a crash in instanced characters mode 
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.2, 5.3
+
+
+
+
+
+GOLAEM FOR UNREAL 9.0.0 - CHANGELOG - November 10th 2023
+---------------------------------------------
+
+** Bug fixes
+
+- Fixed a crash when running Shipping version
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.1, 5.2
+
+
+
+
+
+GOLAEM FOR UNREAL 8.2.6 - CHANGELOG - December 18th 2023
+---------------------------------------------
+
+** Refactoring
+
+- Added runtime license for Unreal simulation
+
+** Bug fixes
+- Fixed a crash when running Shipping version
+- Fixed "Use Instanced Characters" mode on GolaemCache node, which was generating a crash
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.2, 5.3
+
+
+
+
+
+GOLAEM FOR UNREAL 8.2.5 - CHANGELOG - September 25th 2023
+---------------------------------------------
+
+** Improvements
+
+- Added material linking option when importing a Character
+
+** Bug fixes
+
+- Fix gcha / gcg assets not importing properly in Unreal 5.2
+- Fixed log not working in standalone applications
+- Fixed PLE license not working in standalone applications
+- Fixed missing dependencies when packaging
+- The GDA file on Golaem Simulation nodes can now be edited in blueprints 
+
+** Refactoring
+
+- Added support for Unreal Engine 5.2
+- Removed support for Unreal Engine 5.0
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.2, 5.3
+
+
+
+
+GOLAEM FOR UNREAL 8.2.4 - CHANGELOG - June 27th 2023
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 8.2.4
+
+** Bug fixes
+
+- Fixed dirmap in the Golaem For Unreal plugin
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.2, 5.3
+
+
+
+
+GOLAEM FOR UNREAL 8.2.3 - CHANGELOG - April 12th 2023
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 8.2.3
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.2, 5.3
+
+
+
+
+
+GOLAEM FOR UNREAL 8.2.2 - CHANGELOG - February 10th 2023
+---------------------------------------------
+
+** Improvements
+
+- Added support for Actor Hidden In Game attribute in the Unreal Sequencer
+- Added support of dirmapping through environment variable GLM_DIRMAP in the Golaem For Unreal plugin
+- Added support for multiple sequencer tracks of a single Golaem Cache in the Golaem For Unreal plugin
+
+** Refactoring
+
+- Added support for Unreal Engine 5.1
+- Removed support for Unreal Engine 4.27
+
+** Supported DCCs
+
+- Unreal Engine 5.0, 5.1
+
+
+
+
+
+GOLAEM FOR UNREAL 8.2.1 - CHANGELOG - November 28th 2022
+---------------------------------------------
+
+** Bug fixes
+
+- Added an error message when GCG has several root bones instead of crashing
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.0
+
+
+
+
+
+GOLAEM FOR UNREAL 8.2 - CHANGELOG - September 8th 2022
+---------------------------------------------
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.0
+
+*** Bug fixes
+
+- Fixed gcha import when bone count exceeds 255
+- Fixed normal imports of some assets being recomputed wrongly
+
+
+
+
+
+GOLAEM FOR UNREAL 8.1.4 - CHANGELOG - July 5th 2022
+---------------------------------------------
+
+** Improvements
+
+- Improved performance when computing Shader Attributes
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.0
+
+
+
+
+
+GOLAEM FOR UNREAL 8.1.3.1 - CHANGELOG -  May 31st 2022
+---------------------------------------------
+
+** Bug fixes
+
+- Fixed Simulation Cache Library python error when trying to load a simulation cache with a source/destination terrain (since 8.1.2)
+- Fixed Layout Editor in PLE mode in Unreal 5.0
+- Fixed crowd unit not handled correctly until a GolaemCache is played (since 8.1.2)
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.0
+
+
+
+
+
+GOLAEM FOR UNREAL 8.1.3 - CHANGELOG - May 9th 2022
+---------------------------------------------
+
+** Improvements
+
+Added support for Unreal Engine 5.0
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.0
+
+
+
+
+
+GOLAEM FOR UNREAL 8.1.2 - CHANGELOG - March 30th 2022
+---------------------------------------------
+
+** Bug fixes
+
+- Fixed Layout File creation in the Golaem For Unreal plugin
+- Fixed the Open Layout File button failing in the Golaem For Unreal plugin
+- Fixed rendering issue when using the Movie Render Queue in the Golaem For Unreal plugin
+- Fixed Golaem Cache node parameters copy between contexts in the Golaem For Unreal plugin
+
+** Supported DCCs
+
+- Unreal Engine 4.26, 4.27, 5.0
+
+
+
+
+
+GOLAEM FOR UNREAL 8.1.1 - CHANGELOG - February 23rd 2022
+---------------------------------------------
+
+** Improvements
+
+- Added an environment variable "GLM_CRASH_REPORT_DIR" indicating the directory where to create a dump report in case of a crash
+
+** Bug fixes
+
+- Fixed a crash when using the Duplicate Layer Node
+- Fixed a crash when using the SnapTo Layer Node
+- Fixed blendshape import issues
+- Fixed refresh after changing the Layout File
+
+** Refactoring
+
+- Removed support for Unreal Engine 4.26
+
+** Supported DCCs
+
+- Unreal Engine 4.26, 4.27, 5.0
+
+
+
+
+GOLAEM FOR UNREAL 8.1 - CHANGELOG - January 24th 2022
+---------------------------------------------
+
+** Improvements
+
+- Terrain export with UE 5 is available
+- Terrain can now be exported from landscape or static meshes actors.
+- Added a warning when gcg not found
+
+** Bug fixes
+
+- Fixed a crash when duplicating golaem cache track in sequencer
+- Fixed a crash when reloading a scene with a Golaem Cache and a cache unavailable
+- At gcha character import, fixed a crash when no shader asset assigned to the mesh 
+- Fixed character import with scaled root
+- Fixed Terrain adaptation and terrain export scale
+
+** Supported DCCs
+
+- Unreal Engine 4.26, 4.27, 5.0
+
+
+
+
+
+GOLAEM FOR UNREAL 8.0.3 - CHANGELOG - November 3rd 2021
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 8.0.2
+- Added support for Unreal 4.27 and 5.0 Early Access
+
+** Supported DCCs
+
+- Unreal Engine 4.27, 5.0 Early Access
+
+
+
+
+
+GOLAEM FOR UNREAL 8.0.2 - CHANGELOG - September 8th 2021
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 8.0.2
+- Golaem for Unreal plugin can now be packaged for runtime execution (beta)
+- Moved cache import mode choice from import window to Golaem plugin settings
+
+** Supported DCCs
+
+- Unreal Engine 4.26
+
+
+
+
+GOLAEM FOR UNREAL 8.0.1 - CHANGELOG - July 8th 2021
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 8.0.1
+- OverridePoptoolFromMesh: improved error messages
+- GDA Property: allow changing the Data Type when Override is enabled
+- Added GDA to Unreal and Unreal to GDA unit conversion functions
+
+** Supported DCCs
+
+- Unreal Engine 4.26
+
+
+
+
+
+GOLAEM FOR UNREAL 8.0.0 - CHANGELOG - May 12th 2021
+---------------------------------------------
+
+** New features
+
+- New Golaem Engine For Unreal plugin to run simulations in Unreal Engine
+- New Golaem Engine For Unreal wrappers to interact with simulations with Unreal Engine Blueprints
+- Simulation Caches can now be exported from the Golaem Engine For Unreal plugin
+
+
+** Bug fixes
+
+- Fixed sequencer not working with GolaemCache nodes in Unreal Engine 4.26
+
+** Supported DCCs
+
+- Unreal Engine 4.26, 4.27, 5.0
+
+
+
+
+
+GOLAEM FOR UNREAL 7.3.11 - CHANGELOG - June 4th 2021
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.3.10
+
+** Bug fixes
+
+- Unreal 4.26: Fix Sequencer not updating the cache frame
+
+** Supported DCCs
+
+- Unreal Engine 4.25, 4.26
+
+
+
+
+
+GOLAEM FOR UNREAL 7.3.10 - CHANGELOG - April 26th 2021
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.3.10
+
+** Supported DCCs
+
+- Unreal Engine 4.25, 4.26
+
+
+
+
+
+GOLAEM FOR UNREAL 7.3.9 - CHANGELOG - March 10th 2021
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.3.9
+- Added an option to import blendshapes (was always true before)
+
+** Bug fixes
+
+- Fixed a crash when asset bone number != cache bone number
+- Fixed sortedBones algorithm which was not completely identical to Golaem crowd one, and which may have led lead to badly skinned assets in replay before.
+
+** Supported DCCs
+
+- Unreal Engine 4.25, 4.26
+
+
+
+
+
+GOLAEM FOR UNREAL 7.3.8 - CHANGELOG - January 22nd 2021
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.3.8
+
+** Supported DCCs
+
+- Unreal Engine 4.25, 4.26
+
+
+
+
+
+GOLAEM FOR UNREAL 7.3.7 - CHANGELOG - December 3rd 2020
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.3.7
+- Added support of Python 3 for Unreal 4.26 (experimental)
+- Added support for character instancing (rigid skinning)
+
+** Supported DCCs
+
+- Unreal Engine 4.25, 4.26
+
+
+
+
+
+GOLAEM FOR UNREAL 7.3.6 - CHANGELOG - October 20th 2020
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.3.6
+- Improved layout integration in Unreal viewport
+
+** Supported DCCs
+
+- Unreal Engine 4.25
+
+
+
+
+
+GOLAEM FOR UNREAL 7.3.5 - CHANGELOG - August 31st 2020
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.3.5
+
+** Supported DCCs
+
+- Unreal Engine 4.25, 4.26
+
+
+
+
+
+GOLAEM FOR UNREAL 7.3.4 - CHANGELOG - July 28th 2020
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.3.4
+
+** Supported DCCs
+
+- Unreal Engine 4.25, 4.26
+
+
+
+
+
+GOLAEM FOR UNREAL 7.3.3 - CHANGELOG - June 22nd 2020
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.3.3
+- Added support for UE 4.25
+
+** Bug fixes
+
+- Removed a problematic log causing log system overflow
+
+** Supported DCCs
+
+- Unreal Engine 4.25, 4.26
+
+
+
+
+
+GOLAEM FOR UNREAL 7.3.2 - CHANGELOG - May 6th 2020
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.3.2
+- Added support for UE 4.24
+
+** Bug fixes
+
+- Fixed rendering bugs/crashes
+
+** Supported DCCs
+
+- Unreal Engine 4.24 (4.23 on demand)
+
+
+
+
+
+GOLAEM FOR UNREAL 7.3.1 - CHANGELOG - April 7th 2020
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.3.1
+
+** Supported DCCs
+
+- Unreal Engine 4.22 (4.23, 4.24 on demand)
+
+
+
+
+
+GOLAEM FOR UNREAL 7.3 - CHANGELOG - March 9th 2020
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.3
+
+** Supported DCCs
+
+- Unreal Engine 4.22 (4.23, 4.24 on demand)
+
+
+
+
+
+GOLAEM FOR UNREAL 7.2.2 - CHANGELOG - February 10th 2020
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.2.2
+
+** Supported DCCs
+
+- Unreal Engine 4.22 (4.21, 4.23 on demand)
+
+
+
+
+
+GOLAEM FOR UNREAL 7.2.1 - CHANGELOG - January 15th 2020
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.2.1
+- Unreal Geometries can now be exported as Golaem Terrains
+
+** Supported DCCs
+
+- Unreal Engine 4.22 (4.21, 4.23 on demand)
+
+
+
+
+
+GOLAEM FOR UNREAL 7.2 - CHANGELOG - November 21st 2019
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.2
+
+
+** Refactoring
+
+- Changed licensing model for the Golaem for Unreal Engine plugin (now can use a Layout License)
+- Removed support of Unreal Engine 4.20
+
+** Supported DCCs
+
+- Unreal Engine 4.22
+
+Also supported (must be built manually):
+
+- Unreal Engine 4.21, 4.23
+
+
+
+
+
+GOLAEM FOR UNREAL 7.1.1 - CHANGELOG - October 8th 2019
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.1.1
+- Support for Unreal Engine 4.20 to 4.23
+
+** Supported DCCs
+
+- Unreal Engine 4.20
+
+Also supported (must be built manually):
+
+- Unreal Engine 4.21, 4.22, 4.23
+
+
+
+
+
+GOLAEM FOR UNREAL 7.1 - CHANGELOG - September 9h 2019
+---------------------------------------------
+
+** Improvements
+
+- Update to Golaem 7.1
+
+** Supported DCCs
+
+- Unreal Engine 4.20 (4.21, 4.23 on demand)
+
+
+
+
+
+GOLAEM FOR UNREAL 7.0.3 - CHANGELOG - August 8th 2019
+---------------------------------------------
+
+** Bug fixes
+
+- fix mesh display when having characters with multi materials
+- fix a crash when loading the plugin in debug mode
+- fix a crash when importing a GCG with empty mesh
+
+** Supported DCCs
+
+- Unreal Engine 4.20
+
+
+
+
+
+GOLAEM FOR UNREAL 7.0.2 - CHANGELOG - July 10th 2019
+----------------------------------------------------
+
+** API
+
+- Plugin source code is published under LGPL v2.1
+
+** Supported DCCs
+
+- Unreal Engine 4.20
+
+
+
+
+
+GOLAEM FOR UNREAL 7.0.1 - CHANGELOG - June 10th 2019
+----------------------------------------------------
+
+** New features
+
+- New Nodal Simulation Layout Tool
+
+
+** Improvements
+
+- Added Crowd Unit and Character import scale support
+
+** Supported DCCs
+
+- Unreal Engine 4.20
+
+
+
+
+
+GOLAEM FOR UNREAL 6.4 - CHANGELOG - November 13th 2018
+------------------------------------------------------
+
+** New features
+
+- New plugin for Unreal Engine which allows to preview and render Golaem Caches
+
+** Supported DCCs
+
+- Unreal Engine 4.20
+
